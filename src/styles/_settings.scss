@@ -1,0 +1,119 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font: $fs-main;
+  background-color: $main;
+  color: $white;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.site-container {
+  overflow: hidden;
+}
+
+.for-mobile {
+  display: none;
+  @include mobile {
+    display: block;
+  }
+}
+
+.dis-scroll {
+  overflow-y: hidden;
+}
+
+.list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.text {
+  margin: 0;
+  &--main {
+    text-transform: capitalize;
+    font: $fs-menu;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1330px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+}
+
+.title {
+  margin: 0;
+  &--hero {
+    text-transform: uppercase;
+    font: $fs-hero-title;
+    &-small {
+      font: $fs-hero-title-small;
+    }
+  }
+  &--main {
+    text-transform: uppercase;
+    font: $fs-main-title;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0;
+  background-color: $transparent;
+  color: $white;
+  border: none;
+  &--main {
+    padding: 15px 40px;
+    border: 1px solid $white;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    transition: color 0.2s ease-in-out;
+    @include desktop {
+      &::before {
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $white;
+        z-index: -1;
+        transition: all 0.2s ease-in-out;
+      }
+      &:hover {
+        color: $main;
+        &::before {
+          content: '';
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+}

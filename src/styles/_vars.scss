@@ -1,0 +1,25 @@
+//COLORS
+$transparent: transparent;
+$white: #fff;
+$black: #000;
+$main: rgb(1, 1, 1);
+$hero-blackout: rgba(0, 0, 0, 0.6);
+$hero-blackout-before: rgba(0, 0, 0, 0.85);
+$boulder: rgb(116, 116, 116);
+$alto: rgb(210, 210, 210);
+$shaft: rgba(35, 35, 35, 0.9);
+
+//FONTS
+$f-Ruda: 'Ruda', sans-serif;
+$f-Scope: 'Scope One', sans-serif;
+
+//FONTS-STYLES
+$fs-main: 400 18px / 25px $f-Ruda;
+$fs-hero-title: 400 96px / 115px $f-Ruda;
+$fs-hero-title-small: 400 64px / 78px $f-Ruda;
+$fs-main-title: 400 60px / 70px $f-Ruda;
+
+$fs-menu: 400 18px / 25px $f-Scope;
+
+//SIZES
+$section: 30px;

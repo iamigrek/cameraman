@@ -1,0 +1,40 @@
+.about {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 100px 0;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__info {
+    max-width: 620px;
+    width: 100%;
+    margin-right: 20px;
+  }
+  &__title {
+    margin-bottom: 40px;
+  }
+  &__img-wrapper {
+    max-width: 615px;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: radial-gradient(
+        50% 50% at 50% 50%,
+        $transparent,
+        $main
+      );
+    }
+  }
+}
