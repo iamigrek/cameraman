@@ -14,6 +14,19 @@ body {
   font: $fs-main;
   background-color: $main;
   color: $white;
+  overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+  max-width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: $main;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $boulder;
+  border-radius: 3px;
 }
 
 img {
@@ -77,6 +90,12 @@ a {
   &--main {
     text-transform: uppercase;
     font: $fs-main-title;
+    text-shadow: 4px 4px 10px $hero-shadow;
+  }
+  &--contacts {
+    text-transform: uppercase;
+    font: $fs-form-btn;
+    text-shadow: 0px 0px 5px $hero-shadow;
   }
 }
 
@@ -114,6 +133,122 @@ a {
           left: 0;
         }
       }
+    }
+  }
+  &--form {
+    font: $fs-form-btn;
+    text-transform: uppercase;
+    border: 1px solid $white;
+    padding: 10px 20px;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+    @include desktop {
+      &::before {
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $white;
+        z-index: -1;
+        transition: all 0.2s ease-in-out;
+      }
+      &:hover {
+        color: $main;
+        &::before {
+          content: '';
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+  &--portfolio {
+    color: $boulder;
+    text-transform: uppercase;
+    font: $fs-form-btn;
+    padding: 6px 15px;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      border: 1px solid $boulder;
+      transition: all 0.3s ease-in-out;
+      max-height: 0;
+    }
+    &:hover,
+    &-active {
+      color: $white;
+      text-shadow: 0 0 5 $white;
+      &::after {
+        max-height: 1000px;
+        transition: all 0.5s ease-in-out;
+        border-color: $white;
+
+        filter: drop-shadow(0px 0px 5px $white);
+      }
+    }
+  }
+  &--category {
+    color: $boulder;
+    text-transform: uppercase;
+    font: $fs-category-btn;
+    padding: 5px 0;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      transition: all 0.3s ease-in-out;
+      height: 1px;
+      background-color: $white;
+      max-width: 0;
+      width: 100%;
+    }
+    &:hover,
+    &-active {
+      color: $white;
+      text-shadow: 0 0 5 $white;
+      &::after {
+        max-width: 1000px;
+        filter: drop-shadow(0px 0px 5px $white);
+        left: 0;
+      }
+    }
+  }
+  &--close {
+    color: $transparent;
+    background-color: $transparent;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    border-radius: 50%;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url(../images/sprite.svg#close);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    &:hover {
+      transform: rotate(-90deg);
     }
   }
 }

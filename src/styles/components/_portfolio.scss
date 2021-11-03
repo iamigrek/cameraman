@@ -1,0 +1,144 @@
+.portfolio {
+  padding: 100px 0;
+  &__title {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
+  }
+}
+
+.portfolio {
+  position: relative;
+  &-main {
+    display: flex;
+    margin-bottom: 30px;
+    &__item {
+      &:not(:last-child) {
+        margin-right: 100px;
+      }
+    }
+    &__btn {
+      max-width: 160px;
+      width: 100%;
+    }
+  }
+  &-category {
+    display: flex;
+    &__btn {
+      margin: 0 35px;
+    }
+    &__item {
+      position: relative;
+      &:not(:last-child) {
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 0;
+          height: 60%;
+          width: 1px;
+          background-color: $alto;
+          transform: rotate(-20deg) translate(0, -50%);
+        }
+      }
+    }
+  }
+  &__modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10001;
+    visibility: hidden;
+    max-height: 100vh;
+    &-img {
+      max-height: 85vh;
+      position: absolute;
+      border: 1px solid $white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+    &-close {
+      position: absolute;
+      z-index: 10;
+      top: 50px;
+      right: 50px;
+    }
+    &-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: $hero-blackout;
+    }
+  }
+}
+
+.gallery {
+  -webkit-column-count: 4;
+  -moz-column-count: 4;
+  column-count: 4;
+  column-gap: 20px;
+  opacity: 0;
+  &__item {
+    border: 1px solid $white;
+    display: inline-flex;
+    margin: 0 0 20px;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: $transparent;
+      transition: all 0.2s ease-in-out;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background-image: url(../images/zoom.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 2;
+      opacity: 0;
+      transition: all 0.2s ease-in-out;
+    }
+    @include desktop {
+      &:hover {
+        &::after {
+          background-color: $hero-blackout;
+        }
+        &::before {
+          opacity: 1;
+        }
+        .gallery__img {
+          transform: scale(1.1);
+          filter: blur(3px);
+        }
+      }
+    }
+  }
+  &__img {
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+  }
+}

@@ -6,19 +6,52 @@
   position: absolute;
   width: 100%;
   z-index: 1;
+  &--active {
+    position: fixed;
+    background-color: $main;
+    animation: 0.2s head-anim;
+    padding: 20px 0;
+    z-index: 1000;
+    .nav__list {
+      justify-content: space-around;
+    }
+  }
+}
+
+@keyframes head-anim {
+  from {
+    transform: translateY(-500%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .nav {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: transform 0.5s ease-in-out, opacity 0.6s ease-in-out;
+
+  &--disable {
+    transform: translate(0, -500%);
+    opacity: 0;
+  }
   &__list {
     display: flex;
   }
   &__item {
     &:not(:last-child) {
-      margin-right: 60px;
+      margin-right: 100px;
     }
   }
   &__link {
     color: $white;
     font: $fs-menu;
+    transition: all 0.2s ease-in-out;
+    @include desktop {
+      &:hover {
+        text-shadow: 1px 1px 0px #ffffff;
+      }
+    }
   }
 }

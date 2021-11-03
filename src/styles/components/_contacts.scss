@@ -1,0 +1,113 @@
+.contacts {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  &__left {
+    max-width: 170px;
+    width: 100%;
+    margin-right: 150px;
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 45px;
+    }
+    &-title {
+      margin-bottom: 9px;
+    }
+    &-link {
+      font: $fs-menu;
+      color: $alto;
+      transition: all 0.2s ease-in-out;
+      @include desktop {
+        &:hover {
+          color: $white;
+          text-shadow: 1px 1px 0px #ffffff;
+        }
+      }
+    }
+  }
+  &__right {
+    max-width: 420px;
+    width: 100%;
+  }
+  &__title {
+    margin-bottom: 55px;
+    text-align: center;
+  }
+}
+
+.contacts-social {
+  display: flex;
+  &__item {
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+  &__link {
+    transition: all 0.2 ease-in-out;
+    @include desktop {
+      &:hover {
+        filter: drop-shadow(0px 0px 10px $white);
+      }
+    }
+  }
+}
+
+.form {
+  &__item {
+    position: relative;
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+    &::after {
+      content: '';
+      box-shadow: 0px 0px 5px #ffffff;
+      height: 1px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+    }
+  }
+  &__input {
+    background-color: $transparent;
+    border: none;
+    border-bottom: 1px solid $boulder;
+    padding: 4px 0;
+    font: $fs-menu;
+    color: $white;
+    width: 100%;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      border-color: $white;
+    }
+    &:not(:placeholder-shown) {
+      & ~ .form__lable {
+        top: 150%;
+        color: $alto;
+      }
+    }
+  }
+  &__lable {
+    color: $boulder;
+    font: $fs-menu;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+  }
+  &__btn {
+    width: 100%;
+  }
+}

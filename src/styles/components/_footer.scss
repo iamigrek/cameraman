@@ -1,0 +1,20 @@
+.footer {
+  &__wrapper {
+    padding: 10px 0;
+    border-top: 1px solid $boulder;
+    text-align: center;
+  }
+  &__text {
+    color: $boulder;
+    font: $fs-footer;
+  }
+  &__link {
+    color: $white;
+    transition: all 0.2s ease-in-out;
+    @include desktop {
+      &:hover {
+        text-shadow: 1px 1px 0px #ffffff;
+      }
+    }
+  }
+}
