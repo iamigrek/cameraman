@@ -1,8 +1,5 @@
 window.onload = function () {
   document.querySelector('.preloader').style.display = 'none';
-
-  displayPhoto('');
-  setTimeout(() => (galleryWrapper.style.opacity = 1), 1000);
   setTimeout(
     () =>
       document
