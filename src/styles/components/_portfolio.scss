@@ -68,6 +68,7 @@
       transform: translate(-50%, -50%);
       z-index: 10;
     }
+
     &-close {
       position: absolute;
       z-index: 10;
@@ -82,6 +83,7 @@
       position: absolute;
       top: 50px;
       right: 50px;
+      z-index: 11;
     }
   }
 }
@@ -92,9 +94,9 @@
   column-count: 4;
   column-gap: 20px;
   &--video {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
   }
   &__item {
     border: 1px solid $white;
@@ -148,14 +150,74 @@
     pointer-events: none;
     transition: all 0.3s ease-in-out;
   }
+  &__video-poster {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    transform: translate(0, -50%);
+  }
   &__video {
     width: 100%;
     height: auto;
   }
   &__item-video {
+    grid-column: 6 span;
     border: 1px solid $white;
-    &:not(:last-child) {
-      margin-bottom: 20px;
+    margin: 10px 15px;
+    width: 100%;
+    min-height: 360px;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 134px;
+      background-image: url(../images/play-video.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 2;
+      opacity: 0;
+      transition: all 0.2s ease-in-out;
+    }
+    @include desktop {
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+        .gallery__img {
+          transform: scale(1.1);
+          filter: blur(3px);
+        }
+        .gallery__item-video-title-wrapper {
+          max-height: 1000px;
+        }
+        .gallery__item-video-title {
+          transform: translate(0, -500px);
+        }
+      }
+    }
+    &-title-wrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 10px 15px;
+      max-height: 50px;
+      background-color: $hero-blackout;
+      z-index: 1;
+      transition: all 0.2s ease-in-out;
+    }
+    &-title {
+      transition: all 0.2s ease-in-out;
     }
   }
 }

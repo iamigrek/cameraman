@@ -251,4 +251,37 @@ a {
       transform: rotate(-90deg);
     }
   }
+  &--play {
+    width: 15px;
+    height: 20px;
+    background-image: url(../images/sprite.svg#play);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    &-pause {
+      background-image: url(../images/sprite.svg#pause);
+    }
+  }
+  &--volume {
+    width: 22px;
+    height: 20px;
+    background-image: url(../images/sprite.svg#sound);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    &-mute {
+      background-image: url(../images/sprite.svg#mute);
+    }
+  }
+  &--full {
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/sprite.svg#full);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    &-opposite {
+      background-image: url(../images/sprite.svg#full-opposite);
+    }
+  }
 }
