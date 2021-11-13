@@ -20,6 +20,5 @@ window.onload = function () {
   );
   setTimeout(() => {
     document.querySelector('.hero').classList.remove('hero--disable');
-    document.querySelector('body').style.overflowY = 'auto';
   }, 2000);
 };

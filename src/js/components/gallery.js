@@ -275,7 +275,7 @@ function modalView() {
   galleryModalBtn.forEach(item => {
     item.addEventListener('click', () => {
       galleryModal.classList.add('portfolio__modal-bg');
-      document.querySelector('body').style.overflowY = 'hidden';
+      document.querySelector('body').classList.add('dis-scroll');
 
       const galleryModalBtnId = item.getAttribute('id');
 
@@ -389,6 +389,6 @@ function modalView() {
   function galleryModalClose() {
     galleryModal.classList.remove('portfolio__modal-bg');
     galleryModal.innerHTML = '';
-    document.querySelector('body').style.overflowY = 'visible';
+    document.querySelector('body').classList.remove('dis-scroll');
   }
 }
