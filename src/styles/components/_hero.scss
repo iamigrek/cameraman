@@ -81,13 +81,17 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -70%);
     background-color: $main;
     padding: 75px 40px;
     max-width: 500px;
     width: 100%;
+    transition: all 0.2s ease-in-out;
     z-index: 10;
     border: 1px solid $white;
+    &--open {
+      transform: translate(-50%, -50%);
+    }
   }
   &__close {
     position: absolute;

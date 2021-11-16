@@ -9,10 +9,11 @@ $hero-blackout-before: rgba(0, 0, 0, 1);
 $boulder: rgb(116, 116, 116);
 $alto: rgb(210, 210, 210);
 $shaft: rgba(35, 35, 35, 0.9);
+$error: rgb(255, 87, 87);
 
 //FONTS
 $f-Ruda: 'Ruda', sans-serif;
-$f-Scope: 'Scope One', sans-serif;
+$f-Scope: 'Roboto Slab', sans-serif;
 
 //FONTS-STYLES
 $fs-time: 400 14px / 14px $f-Ruda;
@@ -23,8 +24,8 @@ $fs-hero-title: 400 96px / 115px $f-Ruda;
 $fs-hero-title-small: 400 64px / 78px $f-Ruda;
 $fs-main-title: 400 60px / 70px $f-Ruda;
 
-$fs-menu: 400 18px / 25px $f-Scope;
-$fs-footer: 400 16px / 20px $f-Scope;
+$fs-menu: 300 18px / 25px $f-Scope;
+$fs-footer: 300 16px / 20px $f-Scope;
 
 //SIZES
 $section: 30px;

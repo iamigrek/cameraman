@@ -4,13 +4,13 @@
 			<ul class="contacts__list list-reset">
 				<li class="contacts__item">
 					<h3 class="contacts__item-title title title--contacts">
-						My number:
+						Мой номер:
 					</h3>
 					<a href="tel:380671505050" class="contacts__item-link">+38 (067) 123 45 67</a>
 				</li>
 				<li class="contacts__item">
 					<h3 class="contacts__item-title title title--contacts">
-						My email:
+						Моя почта:
 					</h3>
 					<a href="mailto:nazar@gmail.com" class="contacts__item-link">nazar@gmail.com</a>
 				</li>
@@ -59,23 +59,25 @@
 		</div>
 		<div class="contacts__right">
 			<h2 class="contacts__title title title--main">
-				contact me
+				Записаться
 			</h2>
-			<form class="contacts__form form" action="#">
+			<form id="contact-form" class="contacts__form form" action="telegram.php" method="post">
 				<div class="form__item">
-					<input id="form_item_name" class="form__input" type="text" placeholder=" ">
-					<lable for="form_item_name" class="form__lable">Name</lable>
+					<input name="name" id="contact-form-name" class="form__input" type="text" placeholder=" ">
+					<lable for="contact-form-name" class="form__lable">Имя</lable>
+					<span class="form__error"></span>
 				</div>
 				<div class="form__item">
-					<input id="form_item_mail" class="form__input" type="email" placeholder=" ">
-					<lable for="form_item_mail" class="form__lable">Email</lable>
+					<input name="phone" id="contact-form-phone" class="form__input" type="tel" placeholder=" ">
+					<lable for="contact-form-phone" class="form__lable">Номер телефона</lable>
+					<span class="form__error"></span>
 				</div>
 				<div class="form__item">
-					<input id="form_item_number" class="form__input" type="tel" placeholder=" ">
-					<lable for="form_item_number" class="form__lable">Phone Number</lable>
+					<input name="email" id="contact-form-mail" class="form__input" type="text" placeholder=" ">
+					<lable for="contact-form-mail" class="form__lable">Почта</lable>
+					<span class="form__error"></span>
 				</div>
-
-				<button class="form__btn btn btn--form">send</button>
+				<button type="submit" id="contact-form-btn" class="form__btn btn btn--form">Отправить</button>
 			</form>
 		</div>
 	</div>

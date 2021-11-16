@@ -14,6 +14,8 @@ body {
   font: $fs-main;
   background-color: $main;
   color: $white;
+  margin-left: calc(100vw - 100%);
+  margin-right: 0;
 }
 
 ::-webkit-scrollbar {

@@ -6,6 +6,10 @@
   position: absolute;
   width: 100%;
   z-index: 1;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
   &--active {
     position: fixed;
     background-color: $main;
@@ -50,7 +54,43 @@
     transition: all 0.2s ease-in-out;
     @include desktop {
       &:hover {
-        text-shadow: 1px 1px 0px #ffffff;
+        text-shadow: 1px 1px 0px $white;
+      }
+    }
+  }
+}
+
+.lang {
+  &:hover {
+    .lang__list {
+      max-height: 1000px;
+    }
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+  &__list {
+    max-height: 0;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: absolute;
+  }
+  &__link {
+    color: $white;
+    font: $fs-menu;
+    transition: all 0.2s ease-in-out;
+    border-bottom: 1px solid $white;
+    &--chosed {
+      display: block;
+      margin-bottom: 5px;
+      border: none;
+    }
+    @include desktop {
+      &:hover {
+        text-shadow: 1px 1px 0px $white;
       }
     }
   }

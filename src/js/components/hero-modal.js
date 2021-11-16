@@ -11,5 +11,6 @@ heroModalWrapper.addEventListener('click', e => {
 
 function heroModalOpen() {
   heroModalWrapper.classList.toggle('hero-modal--open');
+  heroModal.classList.toggle('hero-modal__inner--open');
   document.querySelector('body').classList.toggle('dis-scroll');
 }

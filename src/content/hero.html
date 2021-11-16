@@ -1,26 +1,28 @@
 <section class="hero hero--disable">
 	<div class="hero__container container">
 		<div class="hero-modal">
-			<div class="hero-modal__inner">
+			<div id="response" class="hero-modal__inner">
 				<button class="hero-modal__close btn btn--close"></button>
 				<h2 class="hero-modal__title title title--main">
-					contact me
+					Contact me
 				</h2>
-				<form class="hero-modal__form form" action="#">
+				<form name="ourForm" id="hero-form" class="hero__form form">
 					<div class="form__item">
-						<input id="form_item_name" class="form__input" type="text" placeholder=" ">
-						<lable for="form_item_name" class="form__lable">Name</lable>
+						<input name="name" id="hero-form-name" class="form__input" type="text" placeholder=" ">
+						<lable for="hero-form-name" class="form__lable">Имя</lable>
+						<span class="form__error"></span>
 					</div>
 					<div class="form__item">
-						<input id="form_item_mail" class="form__input" type="email" placeholder=" ">
-						<lable for="form_item_mail" class="form__lable">Email</lable>
+						<input name="phone" id="hero-form-phone" class="form__input" type="tel" placeholder=" ">
+						<lable for="hero-form-phone" class="form__lable">Номер телефона</lable>
+						<span class="form__error"></span>
 					</div>
 					<div class="form__item">
-						<input id="form_item_number" class="form__input" type="tel" placeholder=" ">
-						<lable for="form_item_number" class="form__lable">Phone Number</lable>
+						<input name="email" id="hero-form-mail" class="form__input" type="text" placeholder=" ">
+						<lable for="hero-form-mail" class="form__lable">Почта</lable>
+						<span class="form__error"></span>
 					</div>
-
-					<button class="form__btn btn btn--form">send</button>
+					<button type="submit" id="hero-form-btn" class="form__btn btn btn--form">Отправить</button>
 				</form>
 			</div>
 		</div>
@@ -32,7 +34,7 @@
 				</span>
 			</h1>
 			<button class="hero__btn hero__btn--disable btn btn--main">
-				contact me
+				Contact me
 			</button>
 		</div>
 	</div>
