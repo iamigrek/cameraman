@@ -8,7 +8,10 @@ window.onload = function () {
     1200
   );
   setTimeout(
-    () => document.querySelector('.nav').classList.remove('nav--disable'),
+    () =>
+      document
+        .querySelector('.header__inner')
+        .classList.remove('header__inner--disable'),
     2000
   );
   setTimeout(

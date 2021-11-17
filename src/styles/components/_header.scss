@@ -7,8 +7,18 @@
   width: 100%;
   z-index: 1;
   &__container {
+  }
+  &__inner {
     display: flex;
     justify-content: space-between;
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 0.5s ease-in-out, opacity 0.6s ease-in-out;
+
+    &--disable {
+      transform: translate(0, -500%);
+      opacity: 0;
+    }
   }
   &--active {
     position: fixed;
@@ -32,14 +42,6 @@
 }
 
 .nav {
-  transform: translate(0, 0);
-  opacity: 1;
-  transition: transform 0.5s ease-in-out, opacity 0.6s ease-in-out;
-
-  &--disable {
-    transform: translate(0, -500%);
-    opacity: 0;
-  }
   &__list {
     display: flex;
   }
@@ -73,7 +75,6 @@
   }
   &__list {
     max-height: 0;
-    height: 100%;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
     position: absolute;

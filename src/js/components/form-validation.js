@@ -15,6 +15,9 @@ for (let j = 0; j < form.length; j++) {
         form[j].email.parentElement.classList.remove('form__item--error');
         form[j].email.parentElement.querySelector('.form__error').textContent =
           '';
+        form[j].phone.parentElement.classList.remove('form__item--error');
+        form[j].phone.parentElement.querySelector('.form__error').textContent =
+          '';
       }
     });
 
