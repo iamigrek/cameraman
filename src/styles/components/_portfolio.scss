@@ -16,10 +16,17 @@
   position: relative;
   &-main {
     display: flex;
+    @include small-mobile {
+      flex-direction: column;
+    }
     margin-bottom: 30px;
     &__item {
       &:not(:last-child) {
         margin-right: 100px;
+        @include small-mobile {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
       }
     }
     &__btn {
@@ -29,12 +36,27 @@
   }
   &-category {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    @include small-mobile {
+      flex-direction: column;
+    }
     &__btn {
       margin: 0 35px;
+      @include mobile {
+        margin: 0 15px;
+      }
     }
     &__item {
       position: relative;
       &:not(:last-child) {
+        @include small-mobile {
+          margin-bottom: 15px;
+          &::after {
+            display: none;
+          }
+        }
         &::after {
           content: '';
           position: absolute;
@@ -93,6 +115,21 @@
   -moz-column-count: 4;
   column-count: 4;
   column-gap: 20px;
+  @include tablet {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+  @include small-tablet {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+  @include mobile {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
   &--video {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -149,11 +186,14 @@
   &__img {
     pointer-events: none;
     transition: all 0.3s ease-in-out;
+    width: inherit;
   }
   &__video-poster {
     position: absolute;
     top: 50%;
+    height: auto;
     width: 100%;
+    object-fit: cover;
     left: 0;
     right: 0;
     transform: translate(0, -50%);
@@ -172,6 +212,15 @@
     overflow: hidden;
     cursor: pointer;
     position: relative;
+    @include tablet {
+      grid-column: 12 span;
+    }
+    @include small-tablet {
+      min-height: 270px;
+    }
+    @include mobile {
+      min-height: 170px;
+    }
     &::before {
       content: '';
       position: absolute;
@@ -215,9 +264,18 @@
       background-color: $hero-blackout;
       z-index: 1;
       transition: all 0.2s ease-in-out;
+      @include small-tablet {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        max-height: 40px;
+      }
     }
     &-title {
       transition: all 0.2s ease-in-out;
+      @include small-tablet {
+        font: $fs-main;
+      }
     }
   }
 }

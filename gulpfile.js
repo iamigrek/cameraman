@@ -75,6 +75,8 @@ const watchFiles = () => {
     server: {
       baseDir: './app',
     },
+    online: true,
+    tunnel: true,
   });
 
   watch('./src/styles/**/*.scss', styles);

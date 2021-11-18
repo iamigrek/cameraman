@@ -67,6 +67,9 @@ a {
   margin: 0;
   &--main {
     font: $fs-menu;
+    @include small-tablet {
+      font: $fs-footer;
+    }
   }
   &--modal {
     text-transform: uppercase;
@@ -90,14 +93,29 @@ a {
   &--hero {
     text-transform: uppercase;
     font: $fs-hero-title;
+    @include small-tablet {
+      font: $fs-hero-title-small;
+    }
+    @include small-mobile {
+      font: $fs-hero-title-small-ad;
+    }
     &-small {
       font: $fs-hero-title-small;
+      @include small-tablet {
+        font: $fs-hero-title-small-ad;
+      }
+      @include small-mobile {
+        font: $fs-form-btn;
+      }
     }
   }
   &--main {
     text-transform: uppercase;
     font: $fs-main-title;
     text-shadow: 4px 4px 10px $hero-shadow;
+    @include small-tablet {
+      font: $fs-hero-title-small-ad;
+    }
   }
   &--contacts {
     text-transform: uppercase;
@@ -117,7 +135,6 @@ a {
     border: 1px solid $white;
     text-transform: uppercase;
     position: relative;
-    z-index: 1;
     transition: color 0.2s ease-in-out;
     @include desktop {
       &::before {
@@ -289,6 +306,56 @@ a {
     background-position: center;
     &-opposite {
       background-image: url(../images/sprite.svg#full-opposite);
+    }
+  }
+  &--burger {
+    background-color: $transparent;
+    color: $transparent;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    &::after {
+      content: '';
+      background-color: $white;
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      transition: all 0.2s ease-in-out;
+    }
+    &::before {
+      content: '';
+      background-color: $white;
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      transition: all 0.2s ease-in-out;
+    }
+    &-item {
+      display: block;
+      opacity: 1;
+      width: 100%;
+      height: 2px;
+      background-color: $white;
+      transition: all 0.1s ease-in-out;
+    }
+    &-active {
+      &::after {
+        transform: rotate(-45deg);
+        top: 50%;
+      }
+      &::before {
+        transform: rotate(45deg);
+        top: 50%;
+      }
+      .btn--burger-item {
+        opacity: 0;
+      }
     }
   }
 }

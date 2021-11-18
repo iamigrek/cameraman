@@ -6,18 +6,48 @@
   position: absolute;
   width: 100%;
   z-index: 1;
-  &__container {
+  @include small-tablet {
+    padding: 15px 0;
   }
   &__inner {
     display: flex;
     justify-content: space-between;
     transform: translate(0, 0);
     opacity: 1;
-    transition: transform 0.5s ease-in-out, opacity 0.6s ease-in-out;
-
+    transition: transform 0.5s ease-in-out, opacity 0.6s ease-in-out,
+      max-height 0.2s ease-in-out;
+    @include small-tablet {
+      background-color: $main;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      max-height: 0;
+      height: 100%;
+      z-index: 99;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     &--disable {
       transform: translate(0, -500%);
       opacity: 0;
+    }
+    &--active {
+      @include small-tablet {
+        z-index: 99;
+        max-height: 10000px;
+      }
+    }
+  }
+  &__burger {
+    display: none;
+    @include small-tablet {
+      z-index: 100;
+      float: right;
+      display: block;
     }
   }
   &--active {
@@ -44,10 +74,23 @@
 .nav {
   &__list {
     display: flex;
+    @include small-tablet {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   &__item {
+    @include small-tablet {
+      margin-bottom: 50px;
+    }
     &:not(:last-child) {
       margin-right: 100px;
+      @include tablet {
+        margin-right: 50px;
+      }
+      @include small-tablet {
+        margin-right: 0;
+      }
     }
   }
   &__link {
@@ -59,10 +102,16 @@
         text-shadow: 1px 1px 0px $white;
       }
     }
+    @include small-tablet {
+      font: $fs-menu-ad;
+    }
   }
 }
 
 .lang {
+  @include small-tablet {
+    display: flex;
+  }
   &:hover {
     .lang__list {
       max-height: 1000px;
@@ -78,12 +127,21 @@
     transition: all 0.3s ease-in-out;
     overflow: hidden;
     position: absolute;
+    @include small-tablet {
+      max-height: 1000px;
+      display: flex;
+      position: sticky;
+    }
   }
   &__link {
     color: $white;
     font: $fs-menu;
     transition: all 0.2s ease-in-out;
     border-bottom: 1px solid $white;
+    @include small-tablet {
+      font: $fs-menu-ad;
+      margin: 0 10px;
+    }
     &--chosed {
       display: block;
       margin-bottom: 5px;

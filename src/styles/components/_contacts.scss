@@ -13,12 +13,19 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    @include tablet {
+      flex-direction: column-reverse;
+    }
   }
   &__left {
     max-width: 170px;
     width: 100%;
     margin-right: 150px;
+    @include tablet {
+      margin-right: 0;
+    }
   }
+
   &__item {
     &:not(:last-child) {
       margin-bottom: 45px;
@@ -41,6 +48,9 @@
   &__right {
     max-width: 420px;
     width: 100%;
+    @include tablet {
+      margin-bottom: 40px;
+    }
   }
   &__title {
     margin-bottom: 55px;
