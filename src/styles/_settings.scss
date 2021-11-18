@@ -49,6 +49,10 @@ a {
   }
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 .dis-scroll {
   overflow-y: hidden;
 }
@@ -62,8 +66,10 @@ a {
 .text {
   margin: 0;
   &--main {
-    text-transform: capitalize;
     font: $fs-menu;
+  }
+  &--modal {
+    text-transform: uppercase;
   }
 }
 

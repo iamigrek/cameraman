@@ -89,13 +89,69 @@ async function formSend(e, j) {
 
   let formData = new FormData(form[j]);
 
+  document.querySelector('.preloader').style.display = 'block';
+
   let response = await fetch('../telegram.php', {
     method: 'POST',
     body: formData,
   });
+
   if (response.ok) {
-    alert('ok');
+    sendingСompleted();
   } else {
-    alert('not ok');
+    sendingError();
   }
+}
+
+function sendingСompleted() {
+  form.forEach(el => {
+    el.reset();
+  });
+  document.querySelector('.preloader').style.display = 'none';
+  document.querySelector('.hero-modal__sending').classList.add('is-hidden');
+  sendingСompletedModal.classList.remove('is-hidden');
+  sendingСompletedModal
+    .querySelector('.send-setatus-close')
+    .addEventListener('click', heroModalOpen);
+
+  //Для второй формы
+  const contactSendingСompletedModal = document.querySelector('.contact__send');
+
+  document.querySelector('.contact-form__send').classList.add('is-hidden');
+  contactSendingСompletedModal.classList.remove('is-hidden');
+  contactSendingСompletedModal
+    .querySelector('.send-setatus-close')
+    .addEventListener('click', () => {
+      contactSendingСompletedModal.classList.add('is-hidden');
+      document
+        .querySelector('.contact-form__send')
+        .classList.remove('is-hidden');
+    });
+}
+
+function sendingError() {
+  form.forEach(el => {
+    el.reset();
+  });
+  document.querySelector('.preloader').style.display = 'none';
+  document.querySelector('.hero-modal__sending').classList.add('is-hidden');
+  sendingErrorModal.classList.remove('is-hidden');
+  sendingErrorModal
+    .querySelector('.send-setatus-close')
+    .addEventListener('click', heroModalOpen);
+
+  //Для второй формы
+
+  const contactSendingErrorModal = document.querySelector('.contact__not-send');
+
+  document.querySelector('.contact-form__send').classList.add('is-hidden');
+  contactSendingErrorModal.classList.remove('is-hidden');
+  contactSendingErrorModal
+    .querySelector('.send-setatus-close')
+    .addEventListener('click', () => {
+      contactSendingErrorModal.classList.add('is-hidden');
+      document
+        .querySelector('.contact-form__send')
+        .classList.remove('is-hidden');
+    });
 }
