@@ -7,9 +7,11 @@ burgerLink.forEach(el => {
 });
 
 function burgerMenuShow() {
-  burgerBtn.classList.toggle('btn--burger-active');
-  document
-    .querySelector('.header__inner')
-    .classList.toggle('header__inner--active');
-  document.body.classList.toggle('dis-scroll');
+  if (getComputedStyle(burgerBtn).display != 'none') {
+    burgerBtn.classList.toggle('btn--burger-active');
+    document
+      .querySelector('.header__inner')
+      .classList.toggle('header__inner--active');
+    document.body.classList.toggle('dis-scroll');
+  }
 }
