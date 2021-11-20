@@ -199,8 +199,6 @@ function galleryDisplay(itemType, itemClass) {
   itemsWrapper.innerHTML = '';
 
   galleryDate.forEach(item => {
-    console.log(itemType, itemClass);
-
     if (item.viewing == 'video') {
       if (itemClass == 'all' && item.type == itemType) {
         itemsWrapper.classList.add('gallery--video');

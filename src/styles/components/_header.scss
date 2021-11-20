@@ -5,7 +5,8 @@
   padding: 50px 0;
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
+
   @include small-tablet {
     padding: 15px 0;
   }
@@ -56,6 +57,10 @@
     animation: 0.2s head-anim;
     padding: 20px 0;
     z-index: 1000;
+    @include small-tablet {
+      padding: 10px 0;
+      background-color: $transparent;
+    }
     .nav__list {
       justify-content: space-around;
     }

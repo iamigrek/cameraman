@@ -3,6 +3,7 @@ function videoPlayer() {
   const playerVideo = document.querySelector('.player__video');
   const playerPlayBtn = document.querySelector('.player__play');
   const playerMuteBtn = document.querySelector('.player__volume');
+  const playerControls = document.querySelector('.player__controls');
   const playerVolumeRange = document.querySelector('.player__volume-range');
   const playerFullScreen = document.querySelector('.player__full');
   const playerProgressBar = document.querySelector(
@@ -48,6 +49,11 @@ function videoPlayer() {
   playerProgressBar.addEventListener('input', videoRewind);
 
   document.addEventListener('DOMContentLoaded', timeSet);
+
+  playerWrapper.addEventListener('mousemove', e => {
+    playerControls.classList.remove('player__controls--hidden');
+    mousCheck(e);
+  });
 
   function playVideo() {
     playerVideo.play();
@@ -113,11 +119,24 @@ function videoPlayer() {
     let timeLeft = playerVideo.duration;
     playerProgressBar.setAttribute('max', timeLeft);
     playerProgressBar.value = timePass;
-    console.log(playerProgressBar.value);
     timeSet();
   }
 
   function videoRewind() {
     playerVideo.currentTime = playerProgressBar.value;
+  }
+
+  function mousCheck(e) {
+    let x = e.pageX;
+    let y = e.pageY;
+    setTimeout(() => {
+      let xAfter = e.pageX;
+      let yAfter = e.pageY;
+      if (xAfter != x || yAfter != y) {
+        playerControls.classList.remove('player__controls--hidden');
+      } else {
+        playerControls.classList.add('player__controls--hidden');
+      }
+    }, 7000);
   }
 }

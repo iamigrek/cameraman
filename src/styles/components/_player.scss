@@ -7,6 +7,7 @@
   height: 100%;
   background-color: $main;
   z-index: 10;
+
   &__video {
     position: absolute;
     width: 100%;
@@ -16,12 +17,26 @@
     transform: translate(-50%, -50%);
   }
   &__controls {
+    max-height: 40px;
+    visibility: visible;
+    opacity: 1;
+    height: 100%;
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    height: 40px;
+    transition: all 0.2s ease-in-out;
     background-color: $hero-blackout;
+    &--hidden {
+      max-height: 0;
+      visibility: hidden;
+      opacity: 0;
+    }
+    &:hover {
+      max-height: 40px;
+      visibility: visible;
+      opacity: 1;
+    }
     &-left {
       display: flex;
       align-items: center;
@@ -57,6 +72,10 @@
       opacity: 0;
       transition: all 0.2s ease-in-out;
       padding: 10px 0;
+      @include small-tablet {
+        max-width: 300px;
+        opacity: 1;
+      }
       &:hover {
         max-width: 300px;
         opacity: 1;

@@ -136,6 +136,7 @@ a {
     text-transform: uppercase;
     position: relative;
     transition: color 0.2s ease-in-out;
+    z-index: 2;
     @include desktop {
       &::before {
         content: '';
@@ -146,7 +147,6 @@ a {
         right: 0;
         bottom: 0;
         background-color: $white;
-        z-index: -1;
         transition: all 0.2s ease-in-out;
       }
       &:hover {
@@ -155,6 +155,7 @@ a {
           content: '';
           width: 100%;
           left: 0;
+          z-index: -1;
         }
       }
     }
@@ -311,8 +312,8 @@ a {
   &--burger {
     background-color: $transparent;
     color: $transparent;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     position: relative;
     &::after {
       content: '';
@@ -320,7 +321,7 @@ a {
       width: 100%;
       height: 2px;
       position: absolute;
-      top: 10px;
+      top: 5px;
       left: 0;
       right: 0;
       transition: all 0.2s ease-in-out;
@@ -331,7 +332,7 @@ a {
       width: 100%;
       height: 2px;
       position: absolute;
-      bottom: 10px;
+      bottom: 5px;
       left: 0;
       right: 0;
       transition: all 0.2s ease-in-out;

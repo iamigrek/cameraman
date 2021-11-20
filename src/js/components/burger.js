@@ -11,4 +11,5 @@ function burgerMenuShow() {
   document
     .querySelector('.header__inner')
     .classList.toggle('header__inner--active');
+  document.body.classList.toggle('dis-scroll');
 }
