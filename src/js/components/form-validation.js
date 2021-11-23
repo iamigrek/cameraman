@@ -3,6 +3,83 @@ const phoneCheck = /^((\+?3)?8)?((0\(\d{2}\)?)|(\(0\d{2}\))|(0\d{2}))\d{7}$/;
 const emailCheck =
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
+errorMessages = [
+  {
+    ru: {
+      invPhone: 'Некорректный номер!',
+      invEmail: 'Некорректная почта!',
+      invClear: 'Нужно что то написать!',
+    },
+    uk: {
+      invPhone: 'Некоректний номер!',
+      invEmail: 'Некоректна пошта!',
+      invClear: 'Потрібно щось написати!',
+    },
+    en: {
+      invPhone: 'Invalid phone number!',
+      invEmail: 'Invalid email!',
+      invClear: 'First enter the data!',
+    },
+  },
+];
+
+function phoneError() {
+  const lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+
+  errorMessages.forEach(item => {
+    switch (lang) {
+      case 'en':
+        invPhone = item.en.invPhone;
+        break;
+      case 'uk':
+        invPhone = item.uk.invPhone;
+        break;
+      default:
+        invPhone = item.ru.invPhone;
+        break;
+    }
+  });
+  return invPhone;
+}
+
+function emailError() {
+  const lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+
+  errorMessages.forEach(item => {
+    switch (lang) {
+      case 'en':
+        invEmail = item.en.invEmail;
+        break;
+      case 'uk':
+        invEmail = item.uk.invEmail;
+        break;
+      default:
+        invEmail = item.ru.invEmail;
+        break;
+    }
+  });
+  return invEmail;
+}
+
+function allError() {
+  const lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+
+  errorMessages.forEach(item => {
+    switch (lang) {
+      case 'en':
+        invClear = item.en.invClear;
+        break;
+      case 'uk':
+        invClear = item.uk.invClear;
+        break;
+      default:
+        invClear = item.ru.invClear;
+        break;
+    }
+  });
+  return invClear;
+}
+
 for (let j = 0; j < form.length; j++) {
   form[j].addEventListener('submit', e => {
     formCheck(e, form[j].phone, form[j].email, j);
@@ -47,7 +124,7 @@ function formCheck(e, phone, email, j) {
     } else if (emailCheck.test(email.value) || !phoneCheck.test(phone.value)) {
       phone.parentElement.classList.add('form__item--error');
       phone.parentElement.querySelector('.form__error').textContent =
-        'Некорректный номер';
+        phoneError();
       e.preventDefault();
     } else {
       e.preventDefault();
@@ -66,7 +143,7 @@ function formCheck(e, phone, email, j) {
     } else if (phoneCheck.test(phone.value) || !emailCheck.test(email.value)) {
       email.parentElement.classList.add('form__item--error');
       email.parentElement.querySelector('.form__error').textContent =
-        'Некорректная почта';
+        emailError();
       e.preventDefault();
     } else {
       e.preventDefault();
@@ -76,10 +153,8 @@ function formCheck(e, phone, email, j) {
   if (phone.value == '' && email.value == '') {
     phone.parentElement.classList.add('form__item--error');
     email.parentElement.classList.add('form__item--error');
-    phone.parentElement.querySelector('.form__error').textContent =
-      'Нужно что то написать';
-    email.parentElement.querySelector('.form__error').textContent =
-      'Нужно что то написать';
+    phone.parentElement.querySelector('.form__error').textContent = allError();
+    email.parentElement.querySelector('.form__error').textContent = allError();
     e.preventDefault();
   }
 }

@@ -5,6 +5,46 @@ function randomId() {
   );
 }
 
+function selectType(item) {
+  const lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+
+  console.log(lang);
+  if (lang == 'en') {
+    itemType = item.en.type;
+  } else if (lang == 'uk') {
+    itemType = item.uk.type;
+  } else {
+    itemType = item.ru.type;
+  }
+  return itemType;
+}
+
+function selectClass(item) {
+  const lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+
+  if (lang == 'en') {
+    itemClass = item.en.class;
+  } else if (lang == 'uk') {
+    itemClass = item.uk.class;
+  } else {
+    itemClass = item.ru.class;
+  }
+  return itemClass;
+}
+
+function selectDesc(item) {
+  const lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+
+  if (lang == 'en') {
+    itemDesc = item.en.desc;
+  } else if (lang == 'uk') {
+    itemDesc = item.uk.desc;
+  } else {
+    itemDesc = item.ru.desc;
+  }
+  return itemDesc;
+}
+
 //types
 typeBtnsDisplay();
 function typeBtnsDisplay() {
@@ -14,7 +54,7 @@ function typeBtnsDisplay() {
   galleryDate.forEach(item => {
     const typeTemplate = {
       id: Math.random(),
-      type: item.type,
+      type: selectType(item),
     };
     typesData.push(typeTemplate);
   });
@@ -56,14 +96,16 @@ function classBtnsDisplay(type) {
   ];
 
   galleryDate.forEach(item => {
-    if (item.type == type) {
+    if (selectType(item) == type) {
       const classTemplate = {
         id: Math.random(),
-        class: item.class,
+        class: selectClass(item),
       };
       classData.push(classTemplate);
     }
   });
+
+  console.log(classData);
 
   const classDataSort = classData.reduce((unique, o) => {
     if (!unique.some(obj => obj.class === o.class)) {
@@ -122,22 +164,24 @@ function galleryDisplay(itemType, itemClass) {
 
   galleryDate.forEach(item => {
     if (item.viewing == 'video') {
-      if (itemClass == 'all' && item.type == itemType) {
+      if (itemClass == 'all' && selectType(item) == itemType) {
         itemsWrapper.classList.add('gallery--video');
         let galleryItem = `
       <li id="${item.id}" class="gallery__item gallery__item-video">
         <div class="gallery__item-video-title-wrapper">
         <h4 class="gallery__item-video-title title title--contacts">
-          ${item.desc}
+          ${selectDesc(item)}
         </h4>
         </div>
-        <img alt="gallery__img" class="gallery__video-poster" src='${item.imgMinUrl}'>
+        <img alt="${selectDesc(item)}" class="gallery__video-poster" src='${
+          item.imgMinUrl
+        }'>
       </li>
       `;
 
         itemsWrapper.innerHTML += galleryItem;
       } else if (
-        (item.type == itemType && item.class == itemClass) ||
+        (selectType(item) == itemType && selectClass(item) == itemClass) ||
         itemType == '' ||
         itemClass == ''
       ) {
@@ -146,28 +190,32 @@ function galleryDisplay(itemType, itemClass) {
       <li id="${item.id}" class="gallery__item gallery__item-video">
       <div class="gallery__item-video-title-wrapper">
         <h4 class="gallery__item-video-title title title--contacts">
-          ${item.desc}
+          ${selectDesc(item)}
         </h4>
         </div>
-        <img alt="gallery__img" class="gallery__video-poster" src='${item.imgMinUrl}'>
+        <img alt="${selectDesc(item)}" class="gallery__video-poster" src='${
+          item.imgMinUrl
+        }'>
       </li>
       `;
 
         itemsWrapper.innerHTML += galleryItem;
       }
     } else {
-      if (itemClass == 'all' && item.type == itemType) {
+      if (itemClass == 'all' && selectType(item) == itemType) {
         itemsWrapper.classList.remove('gallery--video');
 
         let galleryItem = `
       <li id="${item.id}" class="gallery__item">
-        <img alt="gallery__img" class="gallery__img" src='${item.imgMinUrl}'>
+        <img alt="${selectDesc(item)}" class="gallery__img" src='${
+          item.imgMinUrl
+        }'>
       </li>
       `;
 
         itemsWrapper.innerHTML += galleryItem;
       } else if (
-        (item.type == itemType && item.class == itemClass) ||
+        (selectType(item) == itemType && selectClass(item) == itemClass) ||
         itemType == '' ||
         itemClass == ''
       ) {
@@ -175,7 +223,9 @@ function galleryDisplay(itemType, itemClass) {
 
         let galleryItem = `
       <li id="${item.id}" class="gallery__item">
-        <img alt="gallery__img" class="gallery__img" src='${item.imgMinUrl}'>
+        <img alt="${selectDesc(item)}" class="gallery__img" src='${
+          item.imgMinUrl
+        }'>
       </li>
       `;
 
@@ -200,9 +250,9 @@ function modalView() {
       const galleryModalBtnId = item.getAttribute('id');
 
       galleryModal.innerHTML = '';
-      galleryDate.forEach(el => {
-        if (el.id == galleryModalBtnId) {
-          if (el.viewing == 'video') {
+      galleryDate.forEach(item => {
+        if (item.id == galleryModalBtnId) {
+          if (item.viewing == 'video') {
             let modalTemplate = `
 
 		  	<button class="portfolio__modal-btn btn btn--close"></button>
@@ -222,7 +272,7 @@ function modalView() {
       </div>
         <div class="portfolio__modal-player player">
 			<video class="player__video">
-				<source class="player__video-source" src="${el.imgUrl}" type="video/mp4">
+				<source class="player__video-source" src="${item.imgUrl}" type="${item.videoType}">
 			</video>
 			<div class="player__controls">
 				<input class="player__time-progress-range" type="range" value=0>
@@ -274,7 +324,9 @@ function modalView() {
       </div>
 		  	<button class="portfolio__modal-btn btn btn--close"></button>
         
-        <img alt="portfolio__modal-img" class="portfolio__modal-img" src='${el.imgUrl}'>
+        <img alt="${selectDesc(item)}" class="portfolio__modal-img" src='${
+              item.imgUrl
+            }'>
         `;
             galleryModal.innerHTML += modalTemplate;
             document.querySelector('.portfolio__modal-img').onload =

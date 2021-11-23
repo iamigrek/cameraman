@@ -1,3 +1,3 @@
-const lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+// const lang = document.getElementsByTagName('html')[0].getAttribute('lang');
 
-console.log(lang);
+// console.log(lang);
