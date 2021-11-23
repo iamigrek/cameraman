@@ -30,6 +30,15 @@ body {
   border-radius: 3px;
 }
 
+.scroller::-webkit-scrollbar-track {
+  background-color: #c2d2e4;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  height: 30px;
+  background-color: #0a4c95;
+}
+
 img {
   max-width: 100%;
 }
@@ -115,6 +124,9 @@ a {
     text-shadow: 4px 4px 10px $hero-shadow;
     @include small-tablet {
       font: $fs-hero-title-small-ad;
+    }
+    @include small-mobile {
+      font: $fs-hero-title-small-mobile;
     }
   }
   &--contacts {

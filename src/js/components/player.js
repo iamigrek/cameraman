@@ -50,9 +50,9 @@ function videoPlayer() {
 
   document.addEventListener('DOMContentLoaded', timeSet);
 
-  playerWrapper.addEventListener('mousemove', e => {
+  playerWrapper.addEventListener('mousemove', () => {
     playerControls.classList.remove('player__controls--hidden');
-    mousCheck(e);
+    mousCheck();
   });
 
   function playVideo() {
@@ -126,17 +126,9 @@ function videoPlayer() {
     playerVideo.currentTime = playerProgressBar.value;
   }
 
-  function mousCheck(e) {
-    let x = e.pageX;
-    let y = e.pageY;
+  function mousCheck() {
     setTimeout(() => {
-      let xAfter = e.pageX;
-      let yAfter = e.pageY;
-      if (xAfter != x || yAfter != y) {
-        playerControls.classList.remove('player__controls--hidden');
-      } else {
-        playerControls.classList.add('player__controls--hidden');
-      }
-    }, 7000);
+      playerControls.classList.add('player__controls--hidden');
+    }, 10000);
   }
 }
