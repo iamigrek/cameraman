@@ -51,7 +51,6 @@ function videoPlayer() {
   document.addEventListener('DOMContentLoaded', timeSet);
 
   playerWrapper.addEventListener('mousemove', () => {
-    playerControls.classList.remove('player__controls--hidden');
     mousCheck();
   });
 
@@ -127,8 +126,15 @@ function videoPlayer() {
   }
 
   function mousCheck() {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       playerControls.classList.add('player__controls--hidden');
-    }, 10000);
+    }, 5000);
+    playerWrapper.addEventListener('mousemove', () => {
+      clearTimeout(timeout);
+      playerControls.classList.remove('player__controls--hidden');
+    });
   }
 }
+
+
+

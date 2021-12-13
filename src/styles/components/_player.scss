@@ -63,8 +63,6 @@
     padding: 10px 15px;
   }
   &__volume {
-    margin-right: 20px;
-
     &:hover + .player__volume-range {
       max-width: 300px;
       opacity: 1;
@@ -75,7 +73,7 @@
       max-width: 0;
       opacity: 0;
       transition: all 0.2s ease-in-out;
-      padding: 10px 0;
+      padding: 10px 0 10px 20px;
       @include small-tablet {
         max-width: 300px;
         opacity: 1;

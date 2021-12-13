@@ -67,6 +67,7 @@ const images = () => {
     './src/images/**/*.jpg',
     './src/images/**/*.png',
     './src/images/**/*.jpeg',
+    './src/images/**/*.mp4',
   ]).pipe(dest('./app/images'));
 };
 
@@ -85,7 +86,7 @@ const watchFiles = () => {
   watch('./src/js/**/*.js', scripts);
   watch('./src/resources/**', resources);
   watch('./src/images/*.{jpg,jpeg,png,svg}', images);
-  watch('./src/images/**/*.{jpg,jpeg,png}', images);
+  watch('./src/images/**/*.{jpg,jpeg,png,mp4}', images);
   watch('./src/images/svg/**.svg', svgSprites);
 };
 
